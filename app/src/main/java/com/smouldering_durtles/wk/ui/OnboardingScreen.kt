@@ -5,11 +5,8 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -28,20 +25,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -55,10 +47,6 @@ import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
@@ -70,22 +58,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.smouldering_durtles.wk.ui.theme.Charcoal
-import com.smouldering_durtles.wk.ui.theme.ChinaRose
 import com.smouldering_durtles.wk.ui.theme.Cloud
 import com.smouldering_durtles.wk.ui.theme.Dark
-import com.smouldering_durtles.wk.ui.theme.Flash
 import com.smouldering_durtles.wk.ui.theme.Primary
-import com.smouldering_durtles.wk.ui.theme.PrimaryDark
 import com.smouldering_durtles.wk.ui.theme.Snow
 import com.smouldering_durtles.wk.R
 import com.smouldering_durtles.wk.ui.theme.imprima
 import com.smouldering_durtles.wk.ui.theme.notoSans
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.TextFieldValue
+import com.smouldering_durtles.wk.ui.elements.GradientButton
+import com.smouldering_durtles.wk.ui.elements.GradientIconButton
+import com.smouldering_durtles.wk.ui.elements.SecondaryButton
+import com.smouldering_durtles.wk.ui.elements.TextInput
+import com.smouldering_durtles.wk.ui.elements.TransparentButton
 import com.smouldering_durtles.wk.ui.theme.Ghost
-import com.smouldering_durtles.wk.ui.theme.Input
-import com.smouldering_durtles.wk.ui.theme.PrimaryFocus
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -211,29 +197,13 @@ fun OnBoardingScreens() {
                 }
             }
             if (pagerState.currentPage < 2) {
-                val gradient = Brush.horizontalGradient(listOf(PrimaryDark, ChinaRose, Primary))
-                IconButton(
+                GradientIconButton(
+                    vector = Icons.Filled.ArrowForward,
                     onClick = {
                         scope.launch {
                             pagerState.animateScrollToPage(pagerState.currentPage + 1)
                         }
-                    }
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(4.dp))
-                            .fillMaxWidth()
-                            .fillMaxHeight()
-                            .background(gradient),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowForward,
-                            contentDescription = "Continue",
-                            tint = Snow,
-                        )
-                    }
-                }
+                    })
             } else { Spacer(modifier = Modifier.width(48.dp)) }
         }
     }
@@ -400,129 +370,3 @@ fun ThirdPage() {
     }
 }
 
-@Composable
-fun GradientButton(text: String, modifier: Modifier, onClick: () -> Unit = { }) {
-    val gradient = Brush.horizontalGradient(listOf(PrimaryDark, ChinaRose, Primary))
-    Button(
-        modifier = Modifier
-            .height(48.dp)
-            .then(modifier),
-        colors = ButtonDefaults.buttonColors(Color.Transparent),
-        shape = RoundedCornerShape(4.dp),
-        contentPadding = PaddingValues(0.dp),
-        onClick = { onClick() },
-    ) {
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(4.dp))
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .background(gradient),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = text,
-                color = Snow,
-                fontSize = 16.sp,
-                fontFamily = imprima,
-                textAlign = TextAlign.Center,
-                letterSpacing = 0.575.sp,
-                modifier = Modifier
-            )
-        }
-    }
-}
-
-@Composable
-fun SecondaryButton(text: String, modifier: Modifier, onClick: () -> Unit = { }) {
-    Button(
-        modifier = Modifier
-            .height(48.dp)
-            .then(modifier),
-        colors = ButtonDefaults.buttonColors(Flash),
-        shape = RoundedCornerShape(4.dp),
-        contentPadding = PaddingValues(0.dp),
-        onClick = { onClick() },
-    ) {
-        Text(
-            text = text,
-            color = Charcoal,
-            fontSize = 16.sp,
-            fontFamily = imprima,
-            textAlign = TextAlign.Center,
-            letterSpacing = 0.575.sp,
-        )
-    }
-}
-
-@Composable
-fun TransparentButton(text: String, onClick: () -> Unit, modifier: Modifier) {
-    TextButton(
-        colors = ButtonDefaults.buttonColors(
-            contentColor = Primary,
-            containerColor = Color.Transparent,
-        ),
-        onClick = onClick,
-        contentPadding = PaddingValues(0.dp),
-        modifier = Modifier.then(modifier)
-    ) {
-        Text(
-            text = text,
-            style = TextStyle(
-                fontFamily = imprima,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                fontSynthesis = FontSynthesis.Weight,
-                letterSpacing = 0.575.sp
-            )
-        )
-    }
-}
-
-@Composable
-fun TextInput(
-    placeholder: String,
-//    clearFocus: Boolean = false,
-//    onFocusClear: () -> Unit = {},
-    modifier: Modifier) {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
-    val interactionSource = remember { MutableInteractionSource() }
-    val isFocused by interactionSource.collectIsFocusedAsState()
-    val focusRequester = remember {
-        FocusRequester()
-    }
-
-    OutlinedTextField(
-        value = text,
-        onValueChange = {
-            text = it
-        },
-        placeholder = { Text(
-            text = placeholder,
-            fontFamily = notoSans,
-            letterSpacing = 0.96.sp) },
-        shape = RoundedCornerShape(10.dp),
-        colors = run {
-            TextFieldDefaults.colors(
-                focusedContainerColor = Snow,
-                unfocusedContainerColor = Snow,
-                disabledContainerColor = Flash,
-                focusedIndicatorColor = PrimaryFocus,
-                unfocusedIndicatorColor = Ghost,
-                focusedPlaceholderColor = Input,
-                unfocusedPlaceholderColor = Input,
-            )
-        },
-        interactionSource = interactionSource,
-        modifier = Modifier
-            .height(48.dp)
-            .shadow(
-                elevation = 4.dp,
-                shape = RoundedCornerShape(10.dp),
-                clip = true,
-                spotColor = if (isFocused) Primary else Input
-            )
-            .focusRequester(focusRequester)
-            .then(modifier)
-    )
-}

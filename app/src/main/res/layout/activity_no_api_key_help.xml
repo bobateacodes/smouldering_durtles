@@ -15,77 +15,136 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorBackground"
     tools:context=".activities.NoApiKeyHelpActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/my_composable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/toolbarColorBackground"
-        android:theme="@style/WKToolbarTheme"
-        android:elevation="4dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-        tools:ignore="UnusedAttribute"/>
+        android:layout_height="match_parent" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView3"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="-64dp"-->
+<!--        android:scaleType="fitStart"-->
+<!--        android:scaleX="1.1"-->
+<!--        android:scaleY="1.1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/frameLayout"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0"-->
+<!--        app:srcCompat="@drawable/onboarding" />-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/frameLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="300dp"-->
+<!--        android:background="@drawable/onboarding_card"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:layout_conversion_absoluteHeight="691dp"-->
+<!--        tools:layout_conversion_absoluteWidth="411dp"-->
+<!--        tools:layout_editor_absoluteX="0dp">-->
 
-            <EditText
-                android:id="@+id/apiKey"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Your V2 API token"
-                android:importantForAutofill="no"
-                android:inputType="textNoSuggestions"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text=""
-                app:layout_constraintEnd_toStartOf="@id/saveButton"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="UnusedAttribute"/>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/column"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginLeft="32dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginRight="32dp"-->
+<!--            android:layout_marginBottom="32dp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:isScrollContainer="true"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:flow_verticalGap="20dp">-->
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                style="@style/WK.Button.Normal"
-                app:layout_constraintBaseline_toBaselineOf="@id/apiKey"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/apiKey"/>
+<!--            <TextView-->
+<!--                android:id="@+id/welcomeText"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="24dp"-->
+<!--                android:fontFamily="@font/imprima"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="@string/welcomeText"-->
+<!--                android:letterSpacing=".05"-->
+<!--                android:text="@string/welcomeText"-->
+<!--                android:textColor="@color/Dark"-->
+<!--                android:textSize="32dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/document"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/apiKey"
-                android:textIsSelectable="true"
-                style="@style/WK.TextView.Normal"/>
+<!--            <TextView-->
+<!--                android:id="@+id/document"-->
+<!--                style="@style/SmoulderingDurtlesTheme"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="24dp"-->
+<!--                android:fontFamily="@font/noto_sans"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="@string/onboarding_page_1"-->
+<!--                android:textColor="@color/Cloud"-->
+<!--                android:textIsSelectable="false"-->
+<!--                android:textSize="18sp"-->
+<!--                app:lineHeight="28sp"-->
+<!--                tools:layout_conversion_absoluteHeight="88dp"-->
+<!--                tools:layout_conversion_absoluteWidth="411dp" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            <Button-->
+<!--                android:id="@+id/continueBtn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/PrimaryDark"-->
+<!--                android:capitalize="none"-->
+<!--                android:fontFamily="@font/imprima"-->
+<!--                android:letterSpacing="0.05"-->
+<!--                android:text="Continue"-->
+<!--                android:textColor="@color/Snow"-->
+<!--                android:textStyle="normal"-->
+<!--                tools:textSize="16dp" />-->
 
-    </ScrollView>
+<!--            <EditText-->
+<!--                android:id="@+id/apiKey"-->
+<!--                style="@android:style/Widget.DeviceDefault.Light.EditText"-->
+<!--                android:layout_width="250dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="Your V2 API token"-->
+<!--                android:importantForAutofill="no"-->
+<!--                android:inputType="textNoSuggestions"-->
+<!--                android:selectAllOnFocus="true"-->
+<!--                android:singleLine="true"-->
+<!--                android:text=""-->
+<!--                android:visibility="gone"-->
+<!--                tools:ignore="UnusedAttribute"-->
+<!--                tools:layout_conversion_absoluteHeight="0dp"-->
+<!--                tools:layout_conversion_absoluteWidth="0dp" />-->
 
-</LinearLayout>
+<!--            <Button-->
+<!--                android:id="@+id/saveButton"-->
+<!--                style="@style/WK.Button.Normal"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Save"-->
+<!--                android:visibility="gone"-->
+<!--                tools:layout_conversion_absoluteHeight="0dp"-->
+<!--                tools:layout_conversion_absoluteWidth="0dp" />-->
+<!--        </LinearLayout>-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

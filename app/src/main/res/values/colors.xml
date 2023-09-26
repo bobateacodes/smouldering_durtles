@@ -16,6 +16,22 @@
   -->
 
 <resources>
+    <color name="Primary">#E4454D</color>
+    <color name="PrimaryDark">#A43D51</color>
+    <color name="Primary10">#1AE4454D</color>
+    <color name="Focus">#FFBEBA</color>
+    <color name="Dark">#312626</color>
+    <color name="Charcoal">#464853</color>
+    <color name="Cloud">#85899D</color>
+    <color name="Input">#B5BAC0</color>
+    <color name="Flash">#F3F4F8</color>
+    <color name="Ghost">#E6E8F0</color>
+    <color name="MorningFog">#CCD6E1</color>
+    <color name="Snow">#FBFCFF</color>
+    <color name="ChinaRose">#AF557E</color>
+    <color name="SeaGreen">#85C9BA</color>
+    <color name="Minnesota">#33567F</color>
+
     <color name="black">#FF000000</color>
     <color name="transparent">#00000000</color>
     <color name="customToastColorBackground">#FFFF80</color>

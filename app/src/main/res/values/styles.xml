@@ -15,6 +15,24 @@
   -->
 
 <resources>
+    <style name="SmoulderingDurtlesTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/Primary</item>
+        <item name="colorPrimaryDark">@color/PrimaryDark</item>
+        <item name="colorPrimaryLight">@color/Primary10</item>
+        <item name="colorAccent">@color/Focus</item>
+        <item name="titleTextColor">@color/Dark</item>
+        <item name="textLocale">@color/Charcoal</item>
+        <item name="textFillColor">@color/Cloud</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/Input</item>
+        <item name="colorButtonNormal">@color/Flash</item>
+        <item name="colorDivider">@color/Ghost</item>
+        <item name="customColorDrawableValue">@color/MorningFog</item>
+        <item name="colorBackground">@color/Snow</item>
+        <item name="colorPrimaryTonedDown">@color/ChinaRose</item>
+        <item name="android:colorAccent">@color/SeaGreen</item>
+        <item name="buttonHighlightColor">@color/Minnesota</item>
+    </style>
+
     <style name="WKLightTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/wkLightColorPrimary</item>
         <item name="colorPrimaryDark">@color/wkLightColorPrimaryDark</item>

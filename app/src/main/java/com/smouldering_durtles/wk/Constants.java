@@ -158,6 +158,11 @@ public final class Constants {
             + " - <tt>study_materials:update</tt><br/><br/>"
             + " Then, copy the token and paste it into the input field above.";
 
+    public static final String OnboardingPageOne = "Welcome to Smouldering Durtles v" + BuildConfig.VERSION_NAME +"!\n" +
+            "\n" +
+            "Smouldering Durtles is an app for WaniKani, the kanji learning service created by Tofugu.\n" +
+            "To learn more about WaniKani, tap the about button below, otherwise tap the 'Continue' button to proceed with the next step in the setup process.";
+
     /**
      * Document to show on the about screen.
      */
